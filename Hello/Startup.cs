@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.OAuth;
+﻿using AspNet.Security.OpenIdConnect.Primitives;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Hello
 {
@@ -27,11 +21,15 @@ namespace Hello
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAuthentication()
-                .AddOAuth(OAuthDefaults.DisplayName, options =>
+                .AddOAuthValidation()
+                .AddOpenIdConnectServer(options =>
                 {
-                    options.TokenEndpoint = "/Token"; 
-                    
+                    // Enable the token endpoint.
+                    options.TokenEndpointPath = "/connect/token";
+                    options.ProviderType = typeof(AuthorizationProvider);
+                    options.AllowInsecureHttp = true;
                 });
+            services.AddScoped<AuthorizationProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +41,7 @@ namespace Hello
             }
 
             app.UseAuthentication();
-            
+
             app.UseMvc();
         }
     }
