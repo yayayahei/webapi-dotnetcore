@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{736CD1
 ProjectSection(SolutionItems) = preProject
 	build.bat = build.bat
 	.gitignore = .gitignore
+	Jenkinsfile = Jenkinsfile
+	README.md = README.md
 EndProjectSection
 EndProject
 Global
