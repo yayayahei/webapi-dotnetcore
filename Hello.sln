@@ -11,6 +11,7 @@ ProjectSection(SolutionItems) = preProject
 	.gitignore = .gitignore
 	Jenkinsfile = Jenkinsfile
 	README.md = README.md
+	deploy.ps1 = deploy.ps1
 EndProjectSection
 EndProject
 Global
