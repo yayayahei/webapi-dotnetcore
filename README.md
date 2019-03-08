@@ -6,6 +6,8 @@ A demo project to provide restful api using dotnet core 2.1.
 
 ### Authorization
 #### Prerequisites
+Install following nuget packages:
+
 * AspNet.Security.OAuth.Validation
 * AspNet.Security.OpenIdConnect.Server
 
@@ -52,6 +54,7 @@ The class is derived from OpenIdConnectServerProvider, is used to generate token
 
 Methods invoked order:
 
+* Request Token
 ```
 ExtractTokenRequest
 ValidateTokenRequest
@@ -62,6 +65,9 @@ SendTokenResponseAsync
 ApplyTokenResponse
 SendPayloadAsync
 ```
+
+* Revoke Token
+... find more at AspNet.Security.OpenIdConnect.Server(https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server)
 
 ##### Add ValidationEvents
 The class is derived from OAuthValidationEvents, is used to decrypt token, validate token...
