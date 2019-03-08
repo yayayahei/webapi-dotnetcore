@@ -1,4 +1,9 @@
-﻿using AspNet.Security.OpenIdConnect.Primitives;
+﻿using System;
+using AspNet.Security.OAuth.Validation;
+using AspNet.Security.OpenIdConnect.Primitives;
+using Hello.Events;
+using Hello.Providers;
+using Hello.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -20,16 +25,23 @@ namespace Hello
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddAuthentication()
-                .AddOAuthValidation()
+            services.AddAuthentication(OAuthValidationDefaults.AuthenticationScheme)
+                .AddOAuthValidation(options => { options.EventsType = typeof(ValidationEvents); })
                 .AddOpenIdConnectServer(options =>
                 {
                     // Enable the token endpoint.
-                    options.TokenEndpointPath = "/connect/token";
+                    options.TokenEndpointPath = "/Token";
+                    options.RevocationEndpointPath = "/Logout";
                     options.ProviderType = typeof(AuthorizationProvider);
                     options.AllowInsecureHttp = true;
+                    options.AccessTokenLifetime = TimeSpan.FromDays(1);
                 });
+
             services.AddScoped<AuthorizationProvider>();
+            services.AddScoped<ValidationEvents>();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<ClientRepository>(sp => new ClientRepository(Configuration));
+            services.AddScoped<TokenRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

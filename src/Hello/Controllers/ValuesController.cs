@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hello.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [Authorize(AuthenticationSchemes = OAuthValidationDefaults.AuthenticationScheme)]
+    [Authorize]
     public class ValuesController : ControllerBase
     {
         // GET api/values
