@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello", "Hello\Hello.csproj", "{AF541694-EEE4-466C-A322-1AE7748EB0A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello", "src\Hello\Hello.csproj", "{AF541694-EEE4-466C-A322-1AE7748EB0A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{54FF414F-58BE-4F07-A012-A4C42646C5BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3B9B09F8-B5EF-4318-9310-18C751C909BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,5 +25,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {860E23BD-21AE-47B7-8A81-EF185E963CEE}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AF541694-EEE4-466C-A322-1AE7748EB0A5} = {54FF414F-58BE-4F07-A012-A4C42646C5BE}
 	EndGlobalSection
 EndGlobal
