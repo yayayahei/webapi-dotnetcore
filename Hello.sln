@@ -5,15 +5,6 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello", "Hello\Hello.csproj", "{AF541694-EEE4-466C-A322-1AE7748EB0A5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{736CD18E-2DB2-412E-87F0-4A5B8782B243}"
-ProjectSection(SolutionItems) = preProject
-	build.bat = build.bat
-	.gitignore = .gitignore
-	Jenkinsfile = Jenkinsfile
-	README.md = README.md
-	deploy.ps1 = deploy.ps1
-EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
