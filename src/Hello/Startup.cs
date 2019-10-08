@@ -1,6 +1,5 @@
 ﻿using System;
 using AspNet.Security.OAuth.Validation;
-using AspNet.Security.OpenIdConnect.Primitives;
 using Hello.Events;
 using Hello.Providers;
 using Hello.Repositories;
@@ -9,13 +8,17 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Hello
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly ILoggerFactory _loggerFactory;
+
+        public Startup(IConfiguration configuration,ILoggerFactory loggerFactory)
         {
+            _loggerFactory = loggerFactory;
             Configuration = configuration;
         }
 
@@ -43,7 +46,7 @@ namespace Hello
             services.AddScoped<ClientRepository>(sp => new ClientRepository(Configuration));
             services.AddScoped<TokenRepository>();
             
-            services.AddHello(Configuration);
+            services.AddHello(Configuration,_loggerFactory);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

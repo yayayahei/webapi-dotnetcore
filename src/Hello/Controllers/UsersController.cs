@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Hello.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ namespace Hello.Controllers
         {
             _dbContext = dbContext;
         }
+
         [Route("{name}")]
         public async Task<User> Get(string name)
         {
